@@ -16,8 +16,7 @@ angular
         mileageGoal.set("rewardname", $scope.user.desireditem); 
 	    mileageGoal.save(null, {
 	        success: function(goal) {
-	          // Execute any logic that should take place after the object is saved.
-	          // supersonic.ui.dialog.alert('Uploaded photo!');
+	          supersonic.ui.tabs.select(2); 
 	        },
 	        error: function(goal, error) {
 	          // Execute any logic that should take place if the save fails.
