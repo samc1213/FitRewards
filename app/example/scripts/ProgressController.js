@@ -1,6 +1,6 @@
 angular
   .module('example')
-  .controller('LearnMoreController', function($scope, supersonic) {
+  .controller('ProgressController', function($scope, supersonic) {
 
     $scope.navbarTitle = "Learn More";
 
