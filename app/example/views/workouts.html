@@ -6,4 +6,20 @@
     </super-navbar-title>
   </super-navbar>
 
+  <div class="list" ng-submit="submitNewWorkout()">
+    <form>
+      <label class="item item-input">
+        <span class="input-label">Mileage</span>
+        <input type="number" ng-model="user.newworkout">
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Goal</span>
+          <select ng-options = "goal as goal.goaltitle for goal in goals track by goal.id" ng-model="selected">
+          </select>
+      </label>
+        <button class="button">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>
