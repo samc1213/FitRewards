@@ -6,4 +6,15 @@
     </super-navbar-title>
   </super-navbar>
 
+  <div class="list" ng-submit="submitNewWorkout()">
+    <form>
+      <label class="item item-input">
+        <span class="input-label">Workout</span>
+        <input type="number" ng-model="user.newworkout">
+      </label>
+        <button class="button">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>

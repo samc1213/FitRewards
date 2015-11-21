@@ -1,11 +1,14 @@
 <div class="padding" ng-controller="ProgressController">
-<super-navbar>
-  <super-navbar-title>
-    {{navbarTitle}}
-  </super-navbar-title>
-</super-navbar>
+	<super-navbar>
+	  <super-navbar-title>
+	    {{navbarTitle}}
+	  </super-navbar-title>
+	</super-navbar>
 
-<div class="padding">
-
-</div>
+	<div>
+	Current goal: {{user.currentgoal}} miles
+	</div>
+	<div>
+	Current progress: {{user.progress}} miles
+	</div>
 </div>

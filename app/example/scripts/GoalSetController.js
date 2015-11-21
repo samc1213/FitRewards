@@ -9,7 +9,7 @@ angular
     	var MileageGoal = Parse.Object.extend("Goals");
 	    var mileageGoal = new MileageGoal();
 
-	    mileageGoal.set("mileage", $scope.user.mileagegoal);
+	    mileageGoal.set("mileage", $scope.user.newmileagegoal);
 	    mileageGoal.set("userid", "mX6kUboBzf");
 	    mileageGoal.save(null, {
 	        success: function(goal) {
