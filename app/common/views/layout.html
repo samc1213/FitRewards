@@ -15,7 +15,9 @@
   <script src="/components/angular/angular.js"></script>
   <script src="/components/supersonic/supersonic.js"></script>
   <script src="/components/webcomponentsjs/webcomponents.js"></script>
-
+  <!-- Parse -->
+  <script src="//www.parsecdn.com/js/parse-1.6.4.min.js"></script>
+  <script>Parse.initialize("65CANSqLo0JqJOIuEmoK8iArQ6YQmMpjiK8Fv3Wv", "owF2JTtiM9HpjNJM7dNnBM3EXgN9ZVINXVcCN6tU");</script>
   <% _.each(yield.modules, function(module) { %>
   <script src="/app/<%= module %>.js"></script>
   <% }); %>

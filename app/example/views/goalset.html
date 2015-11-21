@@ -6,4 +6,15 @@
     </super-navbar-title>
   </super-navbar>
 
+  <div class="list" ng-submit="submitNewMileageGoal()">
+    <form>
+      <label class="item item-input">
+        <span class="input-label">Mileage Goal</span>
+        <input type="number" ng-model="user.mileagegoal">
+      </label>
+        <button class="button">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>
