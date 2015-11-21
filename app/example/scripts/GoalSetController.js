@@ -11,6 +11,9 @@ angular
 
 	    mileageGoal.set("mileage", $scope.user.mileagegoal);
 	    mileageGoal.set("userid", "mX6kUboBzf");
+       // mileageGoal.set("deadline", $scope.user.deadline); 
+        mileageGoal.set("rewardlink", $scope.user.link); 
+        mileageGoal.set("rewardname", $scope.user.desireditem); 
 	    mileageGoal.save(null, {
 	        success: function(goal) {
 	          // Execute any logic that should take place after the object is saved.
