@@ -6,16 +6,20 @@
     </super-navbar-title>
   </super-navbar>
 
+  <div class="list" ng-submit="searchAmazon()">
+    <form>
+      <label class="item item-input">
+        <span class="input-label">Amazon Search:</span>
+        <input type="text" ng-model="user.amazonquery">
+      </label>
+      <button class="button">
+        Submit Amazon
+      </button>
+    </form>
+  </div>
+
   <div class="list" ng-submit="submitNewMileageGoal()">
     <form>
-        <label class="item item-input">
-        <span class="input-label">Desired Item:</span>
-        <input type="text" ng-model="user.desireditem">
-      </label>
-                 <label class="item item-input">
-        <span class="input-label">Desired Item Link:</span>
-        <input type="text" ng-model="user.link">
-      </label>
       <label class="item item-input">
         <span class="input-label">Mileage Goal:</span>
         <input type="number" ng-model="user.mileagegoal">
