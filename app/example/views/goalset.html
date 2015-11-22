@@ -18,6 +18,35 @@
     </form>
   </div>
 
+  <div ng-show="sel">
+    <div class ="list card">
+
+      <div ng-repeat="amazonitem in amazonitems" ng-click="clickee($index)">
+        <div class = "item item-avatar item-text-wrap">
+          <img src = "{{amazonitem.image}}">
+          <span ng-bind="amazonitem.title">
+          </span>
+          <br>
+          <span ng-bind="amazonitem.price">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="user.checker">
+     <div class ="list card">
+        <div class = "item item-avatar item-text-wrap">
+          <img src = "{{selectedamazonitem.poop.image}}">
+          <span ng-bind="selectedamazonitem.poop.title">
+          </span>
+          <br>
+          <span ng-bind="selectedamazonitem.poop.price">
+          </span>
+        </div>
+    </div>
+  </div>
+
   <div class="list" ng-submit="submitNewMileageGoal()">
     <form>
       <label class="item item-input">
