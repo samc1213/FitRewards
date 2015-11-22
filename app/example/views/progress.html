@@ -15,15 +15,13 @@
             </div>
             <div class="item item-text-wrap">
                 <span>Progress:</span>
-                <span ng-bind="computeTotalProgress(goal.get('workouts'))"></span>
+                <span ng-bind="goal.get('mileage') - goal.get('remaining')"></span>
             </div>
-            <div ng-show="computeTotalProgress(goal.get('workouts')) >= goal.get('mileage')">
-                
-                
-                 <div class="item item-text-wrap">
-                <div ng-bind="goal.get('rewardlink')"></div>
-            </div>
+            <div class="item item-text-wrap">
+                <span>Remaining:</span>
+                <span ng-bind="goal.get('remaining')"></span>
             </div>
         </div>
     </div>
 </div>
+
