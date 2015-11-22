@@ -1,6 +1,15 @@
 .supersonic-navbar-mock {
-  background-color: #00B5FF !important;
+  background-color: #1b1b1b !important;
   text-align: center;
   font-weight: 600;
 }
 
+.button-positive {
+	background-color: #f1684e !important;
+	border-color: #f1684e !important;
+}
+
+.button-negative {
+	background-color: #474747 !important;
+	border-color: #474747 !important;
+}

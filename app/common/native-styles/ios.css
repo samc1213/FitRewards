@@ -4,7 +4,7 @@
  ***********************************************************/
 
 navigation-bar {
-  background-color: #00B5FF;
+  background-color: #1b1b1b;
   color: #ffffff;
 }
 
@@ -22,6 +22,7 @@ navigation-bar button, navigation-bar back-bar-button {
 tab-bar {
   background-color: #ffffff;
   border-top: 1px #d8d8d8 solid;
+  color: #f1684e;
 }
 
 tab-bar tab-bar-item {
@@ -30,8 +31,13 @@ tab-bar tab-bar-item {
   font-size: 10px;
 }
 
+tab-bar:selected {
+  color: #f1684e;
+}
+
 tab-bar tab-bar-item:selected {
-  color: #1596f7;
+  color: #f1684e;
+  background-color: #f1684e;
 }
 
 tab-bar-item#goalset {

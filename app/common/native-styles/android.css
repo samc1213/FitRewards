@@ -4,7 +4,7 @@
  ***********************************************************/
 
 navigation-bar {
-  background-color: #00B5FF;
+  background-color: #1b1b1b;
   color: #ffffff;
   padding-left: 6px;
   padding-right: 6px;
@@ -49,7 +49,7 @@ tab-bar tab-bar-item {
 }
 
 tab-bar tab-bar-item:selected {
-  color: #1596f7;
+  color: #f1684e;
 }
 
 tab-bar divider {
@@ -57,7 +57,7 @@ tab-bar divider {
 }
 
 tab-bar tab-bar-item marker-top:selected {
-  background-color: #1596f7;
+  background-color: #f1684e;
 }
 
 
