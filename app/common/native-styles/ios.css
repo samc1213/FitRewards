@@ -3,10 +3,13 @@
  * Read more about native styles at http://docs.appgyver.com
  ***********************************************************/
 
+/*@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+*/
 navigation-bar {
   background-color: #1b1b1b;
   color: #ffffff;
-}
+/*  font-family: 'Source Sans Pro', sans-serif; 
+*/}
 
 navigation-bar title {
   color: #ffffff;

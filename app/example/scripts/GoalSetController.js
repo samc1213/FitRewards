@@ -1,6 +1,7 @@
 angular
   .module('example')
   .controller('GoalSetController', function($scope, supersonic, $http, $element) {
+    supersonic.ui.views.current.whenVisible( function() {
     $scope.navbarTitle = "Goal Set!";
     $scope.user = {};
     $scope.amazonitems = [];
@@ -95,13 +96,17 @@ angular
       mileageGoal.set("progress", 0);
         mileageGoal.set("workouts", []); 
         mileageGoal.set("ifRedeemed",false); 
+      $scope.user = {checker:false, currentlypaying:false, milevamazon:false};
+           $scope.sel = false;  
        // mileageGoal.set("deadline", $scope.user.deadline); 
         // mileageGoal.set("rewardname", $scope.user.desireditem); 
 	    mileageGoal.save(null, {
 	        success: function(goal) {
 	        var view = new supersonic.ui.View("example#goalset");
                 // supersonic.ui.layers.push(view); 
-	          supersonic.ui.tabs.select(2); 
+	         
+
+            supersonic.ui.tabs.select(2); 
 	        },
 	        error: function(goal, error) {
 	          // Execute any logic that should take place if the save fails.
@@ -118,6 +123,7 @@ angular
       $scope.sel = true;
     };
 
+    
     $http({
       method: 'GET',
       url: 'https://floating-bastion-3464.herokuapp.com/gettoken.php'
@@ -132,6 +138,9 @@ angular
         clientToken,
         "dropin", {
         container: "payment-form",
+        // onReady: function (integration) {
+        //   checkout = integration;
+        // },
         paymentMethodNonceReceived: function (event, nonce) {
              $http({
                  method: 'POST',
@@ -153,8 +162,14 @@ angular
                 if (response.data.status == "authorized") {
                   supersonic.ui.dialog.alert('Payment of $' + response.data.amount + ' accepted!');
                   $scope.user.currentlypaying = false;
+                  
                   $scope.user.milevamazon = true;
+                  // checkout.teardown(function () {
+                  //   checkout = null;
+                  //   // braintree.setup can safely be run again!
+                  // });
                 }
+
                 else {
                   supersonic.ui.dialog.alert('Rejected. Try again later.');
                 }
@@ -169,4 +184,5 @@ angular
         // or server returns response with an error status.
       supersonic.logger.log(response);
   });
+});
   });
