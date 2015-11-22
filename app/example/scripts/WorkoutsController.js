@@ -42,7 +42,8 @@ angular
 		     workout.set("goal", goal);
 		     workout.save(null, {success: function(workout){
 		     	goal.addUnique("workouts", workout);
-		     	goal.set("progress", goal.get("remaining") - $scope.user.newworkout);
+		     	goal.set("progress", goal.get("remaining") + $scope.user.newworkout);
+		     	goal.set("remaining", goal.get("remaining") - $scope.user.newworkout);
 		     	goal.save(null, {success: function(workout){
 		     		$scope.user.newworkout = null;
 	    			$scope.selected=$scope.goals[0];
