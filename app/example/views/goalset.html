@@ -47,6 +47,7 @@
       </div>
     </div>
 <!-- MILEAGE CHECKER -->
+
     <div class="list" ng-submit="submitNewMileageGoal()" ng-show = "user.milevamazon">
       <form>
         <label class="item item-input item-stacked-label">
@@ -59,7 +60,7 @@
           <input type="date" ng-model="user.deadline">
         </label>
   -->
-          <button class="button button-block button-positive">
+          <button class="button button-block button-positive" ng-show = "user.mileagegoal">
           Submit
         </button>
       </form>
