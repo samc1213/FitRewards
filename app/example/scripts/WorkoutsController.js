@@ -42,7 +42,18 @@ angular
 		     workout.set("goal", goal);
 		     workout.save(null, {success: function(workout){
 		     	goal.addUnique("workouts", workout);
-		     	goal.save();
+		     	goal.save(null, {success: function(workout){
+		     		$scope.user.newworkout = null;
+	    			$scope.selected=$scope.goals[0];
+	    			var view = new supersonic.ui.View("example#workouts");
+                	supersonic.ui.layers.push(view); 
+	          		supersonic.ui.tabs.select(2);
+		     	},
+		     	error: function(workout){
+		     		supersonic.ui.alert('There was a problem saving your workout :(');
+		     	}
+		     	} );
+		     	
 		     },
 		     error: function(workout){
 		     	supersonic.ui.alert('There was a problem saving your workout :(');
@@ -53,8 +64,7 @@ angular
 		  
 		  }
 		 });
-	    $scope.user.newworkout = null;
-	    $scope.selected=$scope.goals[0];
+	    
     };
 
 
