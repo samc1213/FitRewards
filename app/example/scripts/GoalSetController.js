@@ -92,6 +92,7 @@ angular
       mileageGoal.set("price", $scope.selectedamazonitem.poop.price);
       mileageGoal.set("image", $scope.selectedamazonitem.poop.image);
       mileageGoal.set("asin", $scope.selectedamazonitem.poop.asin);
+      mileageGoal.set("progress", 0);
         mileageGoal.set("workouts", []); 
         mileageGoal.set("ifRedeemed",false); 
        // mileageGoal.set("deadline", $scope.user.deadline); 
