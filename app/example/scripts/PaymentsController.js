@@ -3,10 +3,6 @@ angular
 .controller('PaymentsController', function($scope, supersonic, $http, 
     $element) {
 
-    var transform = function(data){
-        return $.param(data);
-    };
-
   $http({
   method: 'GET',
   url: 'https://floating-bastion-3464.herokuapp.com/gettoken.php'
@@ -30,9 +26,13 @@ angular
                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                 return str.join("&");
              },
-             data: {nonce: nonce}
+             data: {nonce: nonce, amount: 10}
         }).then(function successCallback(response) {
             supersonic.logger.log(response);
+            //var response1 = angular.fromJson(response.data);
+            //supersonic.logger.log("amount" + angular.toJson(response1)[0]);
+            supersonic.logger.log("response " + response.data.amount);
+            supersonic.logger.log("status " + response.data.status);
         }, function errorCallback(response) {
             supersonic.logger.log(response);
         });
