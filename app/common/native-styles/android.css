@@ -60,14 +60,15 @@ tab-bar tab-bar-item marker-top:selected {
   background-color: #1596f7;
 }
 
-tab-bar-item#settings {
-  background-image: url(icons/cog.svg);
+
+tab-bar-item#goalset {
+  background-image: url(icons/goalset.png);
 }
 
-tab-bar-item#index {
-  background-image: url(icons/home.svg);
+tab-bar-item#workouts {
+  background-image: url(icons/run.png);
 }
 
-tab-bar-item#internet {
-  background-image: url(icons/search.svg);
+tab-bar-item#progress {
+  background-image: url(icons/gift.png);
 }
