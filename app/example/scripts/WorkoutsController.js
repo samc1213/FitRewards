@@ -13,6 +13,7 @@ angular
     var goals = Parse.Object.extend("Goals");
 	var query = new Parse.Query(goals);
 	query.equalTo("userid", "mX6kUboBzf");
+	query.notEqualTo("ifRedeemed", true);
 	query.find({
 		   success: function(results) {
 		   	 supersonic.logger.log(angular.toJson(results));
