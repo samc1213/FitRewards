@@ -6,7 +6,7 @@ angular
     $scope.amazonitems = [];
     $scope.selectedamazonitem = {};
     $scope.selectedamazonitem.poop = {};
-    $scope.user = {checker:false, currentlypaying:false};
+    $scope.user = {checker:false, currentlypaying:false, milevamazon:false};
 
 
    //  $scope.$watch('myVar', function() {
@@ -88,6 +88,10 @@ angular
 	    mileageGoal.set("mileage", $scope.user.mileagegoal);
 	    mileageGoal.set("userid", "mX6kUboBzf");
 	    mileageGoal.set("remaining",$scope.user.mileagegoal);
+      mileageGoal.set("rewardname", $scope.selectedamazonitem.poop.title);
+      mileageGoal.set("price", $scope.selectedamazonitem.poop.price);
+      mileageGoal.set("image", $scope.selectedamazonitem.poop.image);
+      mileageGoal.set("asin", $scope.selectedamazonitem.poop.asin);
         mileageGoal.set("workouts", []); 
         mileageGoal.set("ifRedeemed",false); 
        // mileageGoal.set("deadline", $scope.user.deadline); 
@@ -109,6 +113,7 @@ angular
 
     $scope.goBack = function(){
       $scope.user.currentlypaying = false;
+      $scope.user.checker = false;
       $scope.sel = true;
     };
 
@@ -147,6 +152,7 @@ angular
                 if (response.data.status == "authorized") {
                   supersonic.ui.dialog.alert('Payment of $' + response.data.amount + ' accepted!');
                   $scope.user.currentlypaying = false;
+                  $scope.user.milevamazon = true;
                 }
                 else {
                   supersonic.ui.dialog.alert('Rejected. Try again later.');

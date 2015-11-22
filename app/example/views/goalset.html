@@ -9,18 +9,16 @@
       </super-navbar-title>
     </super-navbar>
 
-    <div class="list" ng-submit="searchAmazon()">
+<!-- THE AMAZON SEARCH FIELD -->
+    <div class="list" ng-hide = "user.milevamazon">
       <form>
         <label class="item item-input">
           <span class="input-label">Amazon Search:</span>
-          <input type="text" ng-model="user.amazonquery">
+          <input type="text" ng-model="user.amazonquery" ng-change="searchAmazon()">
         </label>
-        <button class="button">
-          Submit Amazon
-        </button>
       </form>
     </div>
-
+<!-- ALL OF THE OPTIONS -->
     <div ng-show="sel">
       <div class ="list card">
 
@@ -36,7 +34,7 @@
         </div>
       </div>
     </div>
-
+<!-- A SELECTED OPTION -->
     <div ng-show="user.checker">
        <div class ="list card">
           <div class = "item item-avatar item-text-wrap">
@@ -49,8 +47,8 @@
           </div>
       </div>
     </div>
-
-    <div class="list" ng-submit="submitNewMileageGoal()">
+<!-- MILEAGE CHECKER -->
+    <div class="list" ng-submit="submitNewMileageGoal()" ng-show = "user.milevamazon">
       <form>
         <label class="item item-input">
           <span class="input-label">Mileage Goal:</span>
@@ -62,7 +60,7 @@
           <input type="date" ng-model="user.deadline">
         </label>
   -->
-          <button class="button">
+          <button class="button button-block button-positive">
           Submit
         </button>
       </form>
