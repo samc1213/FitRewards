@@ -6,7 +6,9 @@
     </super-navbar-title>
   </super-navbar>
 
-  <div class="list" ng-submit="submitNewWorkout()">
+  <button ng-hide="bools.screen1 || bools.hideBack" ng-click="goBack()">Go back</button>
+
+  <div class="list" ng-submit="submitNewWorkout()" ng-hide="bools.screen1 || bools.isrunning">
     <form>
       <label class="item item-input">
         <span class="input-label">Mileage</span>
@@ -22,4 +24,23 @@
       </button>
     </form>
   </div>
+
+  <button ng-show="bools.screen1" ng-click="advanceScreen(false)">Type In A Run</button>
+  <button ng-show="bools.screen1" ng-click="advanceScreen(true)">Record Run</button>
+
+  <div ng-hide="bools.screen1 || !bools.isrunning">
+  <button ng-click="startRunning()" ng-show="bools.showstartrun && !bools.finalkillstart">start run!</button>
+  <button ng-click="stopRunning()" ng-hide="bools.showstartrun">stop run</button>
+  <span ng-show="bools.youran">You Ran </span>{{sum | number: 2}} Miles
+  <form ng-submit="submitNewWorkout()" ng-show="bools.youran">
+    <button class="button">Submit</button>
+    <label class="item item-input item-select">
+        <span class="input-label">Goal</span>
+          <select ng-options = "goal as goal.goaltitle for goal in goals track by goal.id" ng-model="selected">
+          </select>
+      </label>
+  </form>
+  </div>
+
+  
 </div>
