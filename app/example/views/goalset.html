@@ -3,17 +3,16 @@
   <div ng-hide= "user.currentlypaying">
     
     <super-navbar>
-      
       <super-navbar-title>
-        {{navbarTitle}}
+        Set Your Goal
       </super-navbar-title>
     </super-navbar>
 
 <!-- THE AMAZON SEARCH FIELD -->
     <div class="list" ng-hide = "user.milevamazon">
       <form>
-        <label class="item item-input">
-          <span class="input-label">Amazon Search:</span>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Pick your workout gift:</span>
           <input type="text" ng-model="user.amazonquery" ng-change="searchAmazon()">
         </label>
       </form>
@@ -50,9 +49,9 @@
 <!-- MILEAGE CHECKER -->
     <div class="list" ng-submit="submitNewMileageGoal()" ng-show = "user.milevamazon">
       <form>
-        <label class="item item-input">
-          <span class="input-label">Mileage Goal:</span>
-          <input type="number" ng-model="user.mileagegoal">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Set your target to earn this gift:</span>
+          <input type="number" ng-model="user.mileagegoal" placeholder="miles"></span>
         </label>
   <!--
                    <label class="item item-input">
