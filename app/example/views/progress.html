@@ -5,10 +5,25 @@
 	  </super-navbar-title>
 	</super-navbar>
 
-	<div>
-	Current goal: {{user.currentgoal}} miles
-	</div>
-	<div>
-	Current progress: {{user.progress}} miles
-	</div>
+    <div ng-repeat="goal in goals">
+        <div class="card">
+            <div class="item item-divider" ng-bind="goal.get('rewardname')">    
+            </div>
+            <div class="item item-text-wrap">
+                <span> Goal: </span>
+                <span ng-bind="goal.get('mileage')"> </span>
+            </div>
+            <div class="item item-text-wrap">
+                <span>Progress:</span>
+                <span ng-bind="computeTotalProgress(goal.get('workouts'))"></span>
+            </div>
+            <div ng-show="computeTotalProgress(goal.get('workouts')) >= goal.get('mileage')">
+                
+                
+                 <div class="item item-text-wrap">
+                <div ng-bind="goal.get('rewardlink')"></div>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
