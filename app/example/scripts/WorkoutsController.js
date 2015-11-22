@@ -38,14 +38,23 @@ angular
 	    query.equalTo("objectId", objid);
 	    query.find({
 		   success: function(results) {
-		     var pntr = results[0];
-		     workout.set("goal", results[0]);
-		     workout.save();
+		     var goal = results[0];
+		     workout.set("goal", goal);
+		     workout.save(null, {success: function(workout){
+		     	goal.addUnique("workouts", workout);
+		     	goal.save();
+		     },
+		     error: function(workout){
+		     	supersonic.ui.alert('There was a problem saving your workout :(');
+		     }
+		 	});
 		 },
 		  error: function(error) {
 		  
 		  }
 		 });
+	    $scope.user.newworkout = null;
+	    $scope.selected=$scope.goals[0];
     };
 
 
