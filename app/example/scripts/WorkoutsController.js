@@ -6,7 +6,7 @@ angular
   	$scope.bools.finalkillstart = false;
   	$scope.bools.hideBack = true;
   	$scope.bools.youran = false;
-    $scope.navbarTitle = "Workouts";
+    // $scope.navbarTitle = "Workouts";
     $scope.user = {};
     supersonic.ui.views.current.whenVisible( function() {
 	$scope.goals = [];
@@ -44,11 +44,17 @@ angular
 			
 			$scope.bools.youran = false;
 		}
+		else {
+			$scope.sum = 0;
+			$scope.user.newworkout = null;
+		}
 	}
 
 	$scope.goBack = function() {
 		$scope.bools.screen1 = true;
 		$scope.bools.hideBack = true;
+		// $scope.sum = 0;
+		// $scope.user.workout = 0;
 	}
     $scope.submitNewWorkout = function() {
     	var Workout = Parse.Object.extend("Workouts");
@@ -72,7 +78,7 @@ angular
 		     		$scope.user.newworkout = null;
 	    			$scope.selected=$scope.goals[0];
 	    			var view = new supersonic.ui.View("example#workouts");
-                	supersonic.ui.layers.push(view); 
+                	// supersonic.ui.layers.push(view); 
 	          		supersonic.ui.tabs.select(2);
 		     	},
 		     	error: function(workout){
@@ -138,6 +144,7 @@ angular
 		$scope.bools.hideBack = false;
 		$scope.bools.youran = true;
 		$scope.user.newworkout = $scope.sum;
+		// $scope.sum = 0;
 	};
   });
 function distance(lat1, lon1, lat2, lon2, unit) {

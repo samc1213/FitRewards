@@ -100,7 +100,7 @@ angular
 	    mileageGoal.save(null, {
 	        success: function(goal) {
 	        var view = new supersonic.ui.View("example#goalset");
-                supersonic.ui.layers.push(view); 
+                // supersonic.ui.layers.push(view); 
 	          supersonic.ui.tabs.select(2); 
 	        },
 	        error: function(goal, error) {

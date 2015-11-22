@@ -2,11 +2,11 @@
 
   <super-navbar>
     <super-navbar-title>
-      {{navbarTitle}}
+      Add Your Workout
     </super-navbar-title>
   </super-navbar>
 
-  <button ng-hide="bools.screen1 || bools.hideBack" ng-click="goBack()">Go back</button>
+  <button ng-hide="bools.screen1 || bools.hideBack" ng-click="goBack()" class="button button-block button-positive" >Go back</button>
 
   <div class="list" ng-submit="submitNewWorkout()" ng-hide="bools.screen1 || bools.isrunning">
     <form>
@@ -19,26 +19,31 @@
           <select ng-options = "goal as goal.goaltitle for goal in goals track by goal.id" ng-model="selected">
           </select>
       </label>
-        <button class="button">
+      <div id="buttondiv">
+        
+        <button style="display:inline-block;" class="button button-block button-positive">
         Submit
       </button>
+      </div>
     </form>
   </div>
 
-  <button ng-show="bools.screen1" ng-click="advanceScreen(false)">Type In A Run</button>
-  <button ng-show="bools.screen1" ng-click="advanceScreen(true)">Record Run</button>
+  <button ng-show="bools.screen1" ng-click="advanceScreen(false)" class="button button-block button-positive">Type In A Run</button>
+  <button ng-show="bools.screen1" ng-click="advanceScreen(true)" class="button button-block button-positive">Record Run</button>
 
   <div ng-hide="bools.screen1 || !bools.isrunning">
-  <button ng-click="startRunning()" ng-show="bools.showstartrun && !bools.finalkillstart">start run!</button>
-  <button ng-click="stopRunning()" ng-hide="bools.showstartrun">stop run</button>
-  <span ng-show="bools.youran">You Ran </span>{{sum | number: 2}} Miles
+  <div style="margin-top: 30%;" class="padding-top" style="text-align:center;">
+  <div ng-show="bools.youran" style="font-size: 5em; text-align:center;">You Ran </div><br><br><br><div class="padding" style="font-size: 5em; text-align:center;">{{sum | number: 2}} Miles</div><br><br></div>
+  <button ng-click="startRunning()" ng-show="bools.showstartrun && !bools.finalkillstart" class="button button-block button-positive">Start Run</button>
+  <button ng-click="stopRunning()" ng-hide="bools.showstartrun" class="button button-block button-positive">Stop Run</button>
   <form ng-submit="submitNewWorkout()" ng-show="bools.youran">
-    <button class="button">Submit</button>
-    <label class="item item-input item-select">
-        <span class="input-label">Goal</span>
+  <label class="item item-input item-select" style="font-weight: bold;">
+        <span class="input-label" >Goal</span>
           <select ng-options = "goal as goal.goaltitle for goal in goals track by goal.id" ng-model="selected">
           </select>
       </label>
+    <button class="button button-block button-positive">Submit</button>
+    
   </form>
   </div>
 
