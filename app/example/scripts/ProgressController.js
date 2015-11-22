@@ -8,6 +8,7 @@ angular
           var GameScore = Parse.Object.extend("Goals");
 		  var query = new Parse.Query(GameScore);
 		 query.equalTo("userid", "mX6kUboBzf");
+        query.ascending("remaining"); 
         query.include("workouts"); 
 		 query.find({
 		   success: function(results) {
@@ -18,14 +19,6 @@ angular
 		  
 		  }
 		 });
-            
-        $scope.computeTotalProgress = function(workouts){
-                var total = 0;
-                for (var i = 0; i < workouts.length; i++){
-                    total += workouts[i].get("mileage");
-                }
-                return total; 
-        }
-    
   });
       });
+
