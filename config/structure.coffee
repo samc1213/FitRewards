@@ -26,8 +26,8 @@ module.exports =
 
   preloads: [
     {
-      id: "learn-more"
-      location: "example#learn-more"
+      id: "popup"
+      location: "example#popup"
     }
     {
       id: "using-the-scanner"

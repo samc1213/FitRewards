@@ -1,67 +1,94 @@
+
 <div class="padding" ng-controller="GoalSetController">
+  <div ng-hide= "user.currentlypaying">
+    
+    <super-navbar>
+      
+      <super-navbar-title>
+        {{navbarTitle}}
+      </super-navbar-title>
+    </super-navbar>
 
-  <super-navbar>
-    <super-navbar-title>
-      {{navbarTitle}}
-    </super-navbar-title>
-  </super-navbar>
+    <div class="list" ng-submit="searchAmazon()">
+      <form>
+        <label class="item item-input">
+          <span class="input-label">Amazon Search:</span>
+          <input type="text" ng-model="user.amazonquery">
+        </label>
+        <button class="button">
+          Submit Amazon
+        </button>
+      </form>
+    </div>
 
-  <div class="list" ng-submit="searchAmazon()">
-    <form>
-      <label class="item item-input">
-        <span class="input-label">Amazon Search:</span>
-        <input type="text" ng-model="user.amazonquery">
-      </label>
-      <button class="button">
-        Submit Amazon
-      </button>
-    </form>
-  </div>
+    <div ng-show="sel">
+      <div class ="list card">
 
-  <div ng-show="sel">
-    <div class ="list card">
-
-      <div ng-repeat="amazonitem in amazonitems" ng-click="clickee($index)">
-        <div class = "item item-avatar item-text-wrap">
-          <img src = "{{amazonitem.image}}">
-          <span ng-bind="amazonitem.title">
-          </span>
-          <br>
-          <span ng-bind="amazonitem.price">
-          </span>
+        <div ng-repeat="amazonitem in amazonitems" ng-click="clickee($index)">
+          <div class = "item item-avatar item-text-wrap">
+            <img src = "{{amazonitem.image}}">
+            <span ng-bind="amazonitem.title">
+            </span>
+            <br>
+            <span ng-bind="amazonitem.price">
+            </span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div ng-show="user.checker">
-     <div class ="list card">
-        <div class = "item item-avatar item-text-wrap">
-          <img src = "{{selectedamazonitem.poop.image}}">
-          <span ng-bind="selectedamazonitem.poop.title">
-          </span>
-          <br>
-          <span ng-bind="selectedamazonitem.poop.price">
-          </span>
-        </div>
+    <div ng-show="user.checker">
+       <div class ="list card">
+          <div class = "item item-avatar item-text-wrap">
+            <img src = "{{selectedamazonitem.poop.image}}">
+            <span ng-bind="selectedamazonitem.poop.title">
+            </span>
+            <br>
+            <span ng-bind="selectedamazonitem.poop.price">
+            </span>
+          </div>
+      </div>
+    </div>
+
+    <div class="list" ng-submit="submitNewMileageGoal()">
+      <form>
+        <label class="item item-input">
+          <span class="input-label">Mileage Goal:</span>
+          <input type="number" ng-model="user.mileagegoal">
+        </label>
+  <!--
+                   <label class="item item-input">
+          <span class="input-label">Deadline:</span>
+          <input type="date" ng-model="user.deadline">
+        </label>
+  -->
+          <button class="button">
+          Submit
+        </button>
+      </form>
     </div>
   </div>
 
-  <div class="list" ng-submit="submitNewMileageGoal()">
+  <div ng-show="user.currentlypaying">
+    <div class ="list card">
+          <div class = "item item-avatar item-text-wrap">
+            <img src = "{{selectedamazonitem.poop.image}}">
+            <span ng-bind="selectedamazonitem.poop.title">
+            </span>
+            <br>
+            <span ng-bind="selectedamazonitem.poop.price">
+            </span>
+          </div>
+          <button ng-click = "goBack()" class="button button-block button-positive">Go Back</button>
+
+      </div>
     <form>
-      <label class="item item-input">
-        <span class="input-label">Mileage Goal:</span>
-        <input type="number" ng-model="user.mileagegoal">
-      </label>
-<!--
-                 <label class="item item-input">
-        <span class="input-label">Deadline:</span>
-        <input type="date" ng-model="user.deadline">
-      </label>
--->
-        <button class="button">
-        Submit
-      </button>
+
+      <div id="payment-form"></div>
+      <button type="submit" class="button button-block button-positive">Pay {{selectedamazonitem.poop.price}}</button>
     </form>
+    
+
+
   </div>
 </div>

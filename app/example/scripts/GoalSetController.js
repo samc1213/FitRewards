@@ -1,13 +1,12 @@
 angular
   .module('example')
-  .controller('GoalSetController', function($scope, supersonic, $http) {
+  .controller('GoalSetController', function($scope, supersonic, $http, $element) {
     $scope.navbarTitle = "Goal Set!";
     $scope.user = {};
     $scope.amazonitems = [];
     $scope.selectedamazonitem = {};
     $scope.selectedamazonitem.poop = {};
-    $scope.user = {checker:false};
-    $scope.user = {checker2: false};
+    $scope.user = {checker:false, currentlypaying:false};
 
 
    //  $scope.$watch('myVar', function() {
@@ -18,16 +17,20 @@ angular
     $scope.sel = false;
     $scope.selectedamazonitem.poop = $scope.amazonitems[index];
     $scope.user.checker = true;
+    $scope.user.currentlypaying = true;
+    $scope.navbarTitle = "Payment";
 
-    var modalView = new supersonic.ui.View("example#popup");
-    var options = {
-      animate: true,
-      params: {
-        id: $scope.amazonitems[index]
-      }
-    }
+    // var modalView = new supersonic.ui.View("example#popup");
+    // var options = {
+    //   animate: true
+    // };
 
-    supersonic.ui.modal.show(modalView, options);
+    // supersonic.data.channel('events').publish($scope.amazonitems[index]);
+    
+    
+
+
+    // supersonic.ui.modal.show(modalView, options);
 
   }
 
@@ -57,6 +60,7 @@ angular
                 item.image = response.data[i].image;
                 // supersonic.logger.log(item.image);
                 var fullnum = response.data[i].price;
+                item.priceval = fullnum;
                 // supersonic.logger.log(typeof fullnum);
 
                 var beforenum = fullnum.substring(0, fullnum.length-2);
@@ -102,4 +106,60 @@ angular
 
 	      });
     };
+
+    $scope.goBack = function(){
+      $scope.user.currentlypaying = false;
+      $scope.sel = true;
+    };
+
+    $http({
+      method: 'GET',
+      url: 'https://floating-bastion-3464.herokuapp.com/gettoken.php'
+      }).then(function successCallback(response) {
+      supersonic.logger.log("hello");
+        // this callback will be called asynchronously
+        // when the response is available
+      var clientToken = response.data;
+      supersonic.logger.log(clientToken);
+       braintree.setup(
+        // Replace this with a client token from your server
+        clientToken,
+        "dropin", {
+        container: "payment-form",
+        paymentMethodNonceReceived: function (event, nonce) {
+             $http({
+                 method: 'POST',
+                 url: 'https://floating-bastion-3464.herokuapp.com/postnonce.php',
+                 headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
+                 transformRequest: function(obj) {
+                    var str = [];
+                    for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                 },
+                 data: {nonce: nonce, amount: parseFloat($scope.selectedamazonitem.poop.priceval)/100.00}
+            }).then(function successCallback(response) {
+                supersonic.logger.log(response);
+                //var response1 = angular.fromJson(response.data);
+                //supersonic.logger.log("amount" + angular.toJson(response1)[0]);
+                supersonic.logger.log("response " + response.data.amount);
+                supersonic.logger.log("status " + response.data.status);
+                if (response.data.status == "authorized") {
+                  supersonic.ui.dialog.alert('Payment of $' + response.data.amount + ' accepted!');
+                  $scope.user.currentlypaying = false;
+                }
+                else {
+                  supersonic.ui.dialog.alert('Rejected. Try again later.');
+                }
+            }, function errorCallback(response) {
+                supersonic.logger.log(response);
+
+            });
+          }
+        });
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      supersonic.logger.log(response);
+  });
   });
