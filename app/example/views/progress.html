@@ -8,21 +8,22 @@
     <div ng-repeat="goal in goals">
         <div class="card">
             <div class = "item item-avatar">
-                <img src = "{{goal.get('image')}}">
-                <span ng-bind="goal.get('rewardname')">
+                <img src = "{{goal.get('image')}}" style="margin-top:30px">
+                <span class="item item-text-wrap">
+                    {{goal.get('rewardname')}}
                 </span>
                 <br>
                 <span>
-                    Progress: {{goal.get('progress')}} / {{goal.get('mileage')}}
+                    {{round(goal.get('progress'))}} / {{goal.get('mileage')}} miles
                 </span>
-                <br>
+                
                 <span ng-show = "goal.get('ifRedeemed')">
-                    <button class="button-small button-outline button-positive">
+                    <button class="button-small button-outline button-positive" style="float:right">
                         Redeemed
                     </button>
                 </span>
                 <span ng-show = "(goal.get('progress') >= goal.get('mileage')) && !goal.get('ifRedeemed')">
-                    <button ng-click = "redeem($index)"> 
+                    <button class="button button-small button-positive" style="float:right" ng-click = "redeem($index)"> 
                         Redeem
                     </button>
                 </span>

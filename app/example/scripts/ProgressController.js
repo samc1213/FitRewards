@@ -3,6 +3,10 @@ angular
   .controller('ProgressController', function($scope, supersonic) {
     $scope.navbarTitle = "Progress";
 
+
+    $scope.round = function(progress){
+      return progress.toFixed(2); 
+    }
         supersonic.ui.views.current.whenVisible(function() {
             
           var GameScore = Parse.Object.extend("Goals");
