@@ -11,7 +11,7 @@ angular
 
 	    mileageGoal.set("mileage", $scope.user.mileagegoal);
 	    mileageGoal.set("userid", "mX6kUboBzf");
-	    mileageGoal.set("progress", 0); 
+	    mileageGoal.set("remaining",$scope.user.mileagegoal);
         mileageGoal.set("workouts", []); 
         mileageGoal.set("ifRedeemed",false); 
        // mileageGoal.set("deadline", $scope.user.deadline); 
