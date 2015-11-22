@@ -34,9 +34,9 @@ angular
 
   }
 
-	$scope.searchAmazon = function() {
+	$scope.searchAmazon = function(query) {
 		supersonic.logger.log("IN searchAmazon");
-		var query = $scope.user.amazonquery;
+		var query = query;
     $scope.amazonitems = [];
     $scope.selectedamazonitem.poop = {};
     $scope.sel = false;
